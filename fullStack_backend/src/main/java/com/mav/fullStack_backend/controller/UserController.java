@@ -64,4 +64,10 @@ public class UserController {
     EnumSet<Status> getStatusList(){
         return EnumSet.allOf(Status.class);
     }
+
+    @GetMapping("/user/email/{email}")
+    User getUserByEmail(@PathVariable String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }

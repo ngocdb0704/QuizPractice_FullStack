@@ -2,12 +2,15 @@ package com.mav.fullStack_backend.model;
 
 import com.mav.fullStack_backend.enums.Role;
 import com.mav.fullStack_backend.enums.Status;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "user",
+        uniqueConstraints={
+                @UniqueConstraint(columnNames = "email"),
+                @UniqueConstraint(columnNames = "mobile")
+        }
+)
 public class User {
 
     @Id

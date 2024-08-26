@@ -26,7 +26,6 @@ const UserProvider = ({ children }) => {
     const fetchUsers = async () => {
         const response = await axios.get('http://localhost:8080/users');
         setUsers(response.data);
-
     };
 
     return (
