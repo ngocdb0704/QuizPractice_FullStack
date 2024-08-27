@@ -19,7 +19,7 @@ public class UserController {
 
     @PostMapping("/user")
     User newUser(@RequestBody User newUser) {
-        return userRepository.save(newUser);
+         return userRepository.save(newUser);
     }
 
     @GetMapping("/users")
@@ -65,9 +65,14 @@ public class UserController {
         return EnumSet.allOf(Status.class);
     }
 
-    @GetMapping("/user/email/{email}")
-    User getUserByEmail(@PathVariable String email) {
-        return userRepository.findByEmail(email);
+    @GetMapping("/user/existEmail/{email}")
+    Boolean isExistEmail(@PathVariable String email){
+        return userRepository.existsByEmail(email);
+    }
+
+    @GetMapping("/user/existMobile/{mobile}")
+    Boolean isExistMobile(@PathVariable String mobile){
+        return userRepository.existsByMobile(mobile);
     }
 
 }
